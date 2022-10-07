@@ -9,6 +9,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.animation",
+            "expression": "1.0.0",
+            "define": "ANIMATION_MODULE"
+        }
+    ],
     "noEngineReferences": false
 }
