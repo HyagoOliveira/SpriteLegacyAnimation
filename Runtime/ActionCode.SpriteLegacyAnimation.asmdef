@@ -1,0 +1,14 @@
+{
+    "name": "ActionCode.SpriteLegacyAnimation",
+    "rootNamespace": "ActionCode.SpriteLegacyAnimation",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
