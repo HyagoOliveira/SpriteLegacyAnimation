@@ -1,0 +1,18 @@
+{
+    "name": "ActionCode.SpriteLegacyAnimation.Editor",
+    "rootNamespace": "ActionCode.SpriteLegacyAnimation.Editor",
+    "references": [
+        "GUID:a680574fc7dc8a545b10b0f13acce257"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
