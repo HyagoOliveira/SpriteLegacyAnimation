@@ -56,7 +56,7 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
             var gameObject = animation.gameObject;
             var indexPropertyName = nameof(animation.index);
             var keyFrames = new Keyframe[sprites.Length + 1];
-            var animationClip = new AnimationClip { frameRate = frameRate, legacy = true };
+            var animationClip = new AnimationClip { frameRate = frameRate, legacy = true, wrapMode = WrapMode.Loop };
             var hierarchyPath = AnimationUtility.CalculateTransformPath(animation.transform, gameObject.transform);
             var binding = EditorCurveBinding.FloatCurve(
                 hierarchyPath,
@@ -97,15 +97,14 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
 
             AnimationUtility.SetEditorCurve(animationClip, binding, curve);
 
-            SaveClip(animationClip);
+            var wasClipSaved = TrySaveClip(animationClip);
+            if (!wasClipSaved) return;
 
             if (animation.animation == null)
             {
                 animation.animation = gameObject.GetComponent<Animation>();
                 if (animation.animation == null) gameObject.AddComponent<Animation>();
             }
-
-            // TODO: consertar o null animationClip que acontece quando há algum cancelamento no fluxo de criação do asset
 
             animation.animation.clip = animationClip;
             AnimationUtility.SetAnimationClips(
@@ -114,7 +113,7 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
             );
         }
 
-        private static void SaveClip(AnimationClip clip)
+        private static bool TrySaveClip(AnimationClip clip)
         {
             const string extension = "anim";
             const string defaultPath = "Assets/Animations";
@@ -128,11 +127,13 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
             ).Trim();
 
             var hasInvalidPath = string.IsNullOrEmpty(path);
-            if (hasInvalidPath) return;
+            if (hasInvalidPath) return false;
 
             AssetDatabase.CreateAsset(clip, path);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+
+            return true;
         }
 
         private static float Truncate(float value) => Mathf.Floor(value * 100F) / 100F;
