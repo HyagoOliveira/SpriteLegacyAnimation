@@ -1,7 +1,7 @@
 # Sprite Legacy Animation
 
 * Use Sprites in Legacy Animations
-* Unity minimum version: **2019.3**
+* Unity minimum version: **2021.2**
 * Current version: **0.1.0**
 * License: **MIT**
 
@@ -11,7 +11,7 @@ Sprite animation is only supported by the new Mecanim Animation System. While th
 
 Nowadays, the main advantage of the Legacy Animation System is simplicity: just create the Animation Clip asset and play it using the Animation component. The downside is that this system was not implemented to change references types, like swapping sprites from a SpriteRenderer component.
 
-This package overcomes this problem by using the SpriteLegacyAnimation with an Animation component. With it, Sprites animations can be previewed and played both on Editor and Runtime.
+This package overcomes this problem. With it, Sprites animations can be previewed and played both on Editor and Runtime, using a SpriteRenderer or Image component.
 
 ## How To Use
 
@@ -20,10 +20,12 @@ Depending where you want the Sprite animation to be played, you have two options
 1. In a **SpriteRenderer**: use the **SpriteLegacyAnimation** component
 2. In an **Image**: use the **ImageLegacyAnimation** component
 
-After that set the *Sprites* array and clip on the **Create Animation Clip** button next to it. Save the Animation Clip asset. 
+After that set the *Sprites* array and click on the **Create Animation Clip** button next to it. Save the Animation Clip asset. 
 Open the Animation window and preview your animation.
 
 ![Coin Animation](Docs~/coin-legacy-animation.gif)
+
+Note that the animation is done by animating the *Index* property inside the SpriteLegacyAnimation or ImageLegacyAnimation components.
 
 ## Installation
 
