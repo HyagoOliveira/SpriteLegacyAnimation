@@ -9,7 +9,7 @@
 
 Sprite animation is only supported by the new Mecanim Animation System. While this system is good, sometimes we just want to play a simple Sprite animation for some GameObject. Using Mecanim, you have to create an AnimationController and an AnimationClip assets, setting this clip to play on the controller. There are too much steps to play just one single animation clip.
 
-Nowadays, the main advantage of the Legacy Animation System is simplicity: just create the Animation Clip asset and play it using the Animatinon component. The downside is that this system was not implemented to change references types, like swapping sprites from a SpriteRenderer component.
+Nowadays, the main advantage of the Legacy Animation System is simplicity: just create the Animation Clip asset and play it using the Animation component. The downside is that this system was not implemented to change references types, like swapping sprites from a SpriteRenderer component.
 
 This package overcomes this problem by using the SpriteLegacyAnimation with an Animation component. With it, Sprites animations can be previewed and played both on Editor and Runtime.
 
@@ -23,14 +23,14 @@ Depending where you want the Sprite animation to be played, you have two options
 After that set the *Sprites* array and clip on the **Create Animation Clip** button next to it. Save the Animation Clip asset. 
 Open the Animation window and preview your animation.
 
+![Coin Animation](Docs~/coin-legacy-animation.gif)
+
 ## Installation
 
 ### Using the Package Registry Server
 
 Follow the instructions inside [here](https://cutt.ly/ukvj1c8) and the package **ActionCode-Sprite Legacy Animation** 
 will be available for you to install using the **Package Manager** windows.
-
-![Coin Animation](Docs~/coin-legacy-animation.gif)
 
 ### Using the Git URL
 
