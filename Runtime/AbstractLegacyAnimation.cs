@@ -29,6 +29,11 @@ namespace ActionCode.SpriteLegacyAnimation
         /// </summary>
         public abstract Sprite Sprite { get; protected set; }
 
+        /// <summary>
+        /// Whether it has Sprites set.
+        /// </summary>
+        public bool HasSprites => sprites.Length > 0;
+
         protected virtual void Reset()
         {
 #if ANIMATION_MODULE

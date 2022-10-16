@@ -9,6 +9,7 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
     [CustomEditor(typeof(AbstractLegacyAnimation), editorForChildClasses: true)]
     public sealed class AbstractLegacyAnimationEditor : UnityEditor.Editor
     {
+        private AbstractLegacyAnimation animation;
         private SerializedProperty spritesProperty;
 
         private readonly string spritesPropertyName;
@@ -20,6 +21,7 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
 
         private void OnEnable()
         {
+            animation = target as AbstractLegacyAnimation;
             spritesProperty = serializedObject.FindProperty(spritesPropertyName);
         }
 
@@ -32,16 +34,17 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
             EditorGUILayout.PropertyField(spritesProperty);
 
             serializedObject.ApplyModifiedProperties();
+
+            EditorGUILayout.Space();
+
+            EditorGUI.BeginDisabledGroup(!animation.HasSprites);
+
+            if (GUILayout.Button("Create Animation Clip")) CreateClip(animation);
+
+            EditorGUI.EndDisabledGroup();
         }
 
-        [MenuItem("CONTEXT/" + nameof(AbstractLegacyAnimation) + "/Create Animation Clip")]
-        private static void CreateAnimationClip(MenuCommand command)
-        {
-            var animation = command.context as AbstractLegacyAnimation;
-            Save(animation);
-        }
-
-        private static void Save(AbstractLegacyAnimation animation)
+        private void CreateClip(AbstractLegacyAnimation animation)
         {
             const int framesBySprite = 3;
             const float frameRate = 60F;
@@ -101,6 +104,8 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
                 animation.animation = gameObject.GetComponent<Animation>();
                 if (animation.animation == null) gameObject.AddComponent<Animation>();
             }
+
+            // TODO: consertar o null animationClip que acontece quando há algum cancelamento no fluxo de criação do asset
 
             animation.animation.clip = animationClip;
             AnimationUtility.SetAnimationClips(
