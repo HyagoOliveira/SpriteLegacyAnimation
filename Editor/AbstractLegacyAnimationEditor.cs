@@ -9,10 +9,15 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
     [CustomEditor(typeof(AbstractLegacyAnimation), editorForChildClasses: true)]
     public sealed class AbstractLegacyAnimationEditor : UnityEditor.Editor
     {
+        private int framesBySprite = 5;
         private AbstractLegacyAnimation animation;
         private SerializedProperty spritesProperty;
 
         private readonly string spritesPropertyName;
+        private readonly GUIContent framesBySpriteLabel = new(
+            "Frames",
+            "The number of frames between each Sprite."
+        );
 
         public AbstractLegacyAnimationEditor()
         {
@@ -37,25 +42,42 @@ namespace ActionCode.SpriteLegacyAnimation.Editor
 
             EditorGUILayout.Space();
 
+            DisplayCreateAnimationClip();
+        }
+
+        private void DisplayCreateAnimationClip()
+        {
+            const int minFrames = 1;
+            const int maxFrames = 100;
+            const string sectionTitle = "Create Animation Clip";
+
             EditorGUI.BeginDisabledGroup(!animation.HasSprites);
+            EditorGUILayout.LabelField(sectionTitle, EditorStyles.boldLabel);
+            EditorGUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("Create Animation Clip")) CreateClip(animation);
+            framesBySprite = Mathf.Clamp(
+                EditorGUILayout.IntField(framesBySpriteLabel, framesBySprite),
+                minFrames,
+                maxFrames
+            );
 
+            if (GUILayout.Button("Create")) CreateClip();
+
+            EditorGUILayout.EndHorizontal();
             EditorGUI.EndDisabledGroup();
         }
 
-        private void CreateClip(AbstractLegacyAnimation animation)
+        private void CreateClip()
         {
-            const int framesBySprite = 3;
             const float frameRate = 60F;
             const float framesBySecond = 1F / frameRate;
-            const float timeBySprite = framesBySprite * framesBySecond;
 
             var currentKeyTime = 0F;
             var sprites = animation.sprites;
             var gameObject = animation.gameObject;
             var indexPropertyName = nameof(animation.index);
             var keyFrames = new Keyframe[sprites.Length + 1];
+            var timeBySprite = framesBySprite * framesBySecond;
             var animationClip = new AnimationClip { frameRate = frameRate, legacy = true, wrapMode = WrapMode.Loop };
             var hierarchyPath = AnimationUtility.CalculateTransformPath(animation.transform, gameObject.transform);
             var binding = EditorCurveBinding.FloatCurve(
