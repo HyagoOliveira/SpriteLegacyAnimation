@@ -2,7 +2,7 @@
 
 * Use Sprites in Legacy Animations
 * Unity minimum version: **2021.2**
-* Current version: **1.0.0**
+* Current version: **1.1.0**
 * License: **MIT**
 
 ## Summary
