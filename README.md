@@ -20,7 +20,8 @@ Depending where you want the Sprite animation to be played, you have two options
 1. In a **SpriteRenderer**: use the **SpriteLegacyAnimation** component
 2. In an **Image**: use the **ImageLegacyAnimation** component
 
-After that set the *Sprites* array and click on the **Create Animation Clip** button next to it. Save the Animation Clip asset. 
+After setting the *Sprites* array property, you can create a legacy Animation Clip asset by clicking on the **Create** button next to it. Select how many frames between each Sprite before create the animation asset.
+
 Open the Animation window and preview your animation.
 
 ![Coin Animation](Docs~/coin-legacy-animation.gif)
