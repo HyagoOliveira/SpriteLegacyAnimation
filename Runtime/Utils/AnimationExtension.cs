@@ -9,7 +9,7 @@ namespace ActionCode.SpriteLegacyAnimation
     public static class AnimationExtension
     {
         /// <summary>
-        /// Plays the given animation (the default one) and waits until it finishes.
+        /// Plays the default animation and waits until it finishes.
         /// </summary>
         /// <param name="animation"></param>
         /// <returns>An IEnumerator coroutine.</returns>
