@@ -28,6 +28,11 @@ Open the Animation window and preview your animation.
 
 Note that the animation is done by animating the *Index* property inside the SpriteLegacyAnimation or ImageLegacyAnimation components.
 
+### Utilities
+
+- DisableAfterAnimationFinish: component which disables the GameObject after the local Animation component finishes to play.
+- Extension function **PlayAndWait**: returns a Coroutine which plays the default (or a given one) animation from an Animation component and waits until it finishes.
+
 ## Installation
 
 ### Using the Package Registry Server
