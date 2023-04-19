@@ -19,5 +19,8 @@
   "author": {
     "name": "Hyago Oliveira",
     "email": "hyagogow@gmail.com"
+  },
+  "dependencies": {
+    "com.unity.2d.sprite": "1.0.0"
   }
 }
