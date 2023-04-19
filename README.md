@@ -2,7 +2,7 @@
 
 * Use Sprites in Legacy Animations
 * Unity minimum version: **2021.2**
-* Current version: **1.1.0**
+* Current version: **1.2.0**
 * License: **MIT**
 
 ## Summary
@@ -30,8 +30,8 @@ Note that the animation is done by animating the *Index* property inside the Spr
 
 ### Utilities
 
-- DisableAfterAnimationFinish: component which disables the GameObject after the local Animation component finishes to play.
-- Extension function **PlayAndWait**: returns a Coroutine which plays the default (or a given one) animation from an Animation component and waits until it finishes.
+- **DisableAfterAnimationFinish**: component which disables the GameObject after the local Animation component finishes to play.
+- Animation extension function **PlayAndWait**: returns a Coroutine which plays the default (or a given one) animation from an Animation component and waits until it finishes.
 
 ## Installation
 
